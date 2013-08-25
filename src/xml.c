@@ -48,6 +48,29 @@ t_xmlnode * xmlnode_alloc( 	t_xmlnode *parent,
 	xmlnode_init (ret, parent, NULL, NULL, name, value);
 	return ret;
 }
+
+t_xmlnode * xmlnode_update (
+	t_xmlnode * n, 
+	const char * const name, 
+	const char * const value)
+{
+	if (!n)
+		return n;
+	
+	if (name)
+	{
+		safe_free (n->name);
+		n->name = strdup (name);
+	}
+	
+	if (value)
+	{
+		safe_free (n->value);
+		n->value = strdup (value);
+	}	
+	
+	return n;
+}
 							
 t_xmlnode * xmlnode_init ( 	t_xmlnode *node,
 							t_xmlnode *parent,

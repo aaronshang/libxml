@@ -110,8 +110,10 @@ t_xmlnode * 		xmlnode_init ( 	t_xmlnode *node,
 
 void 				xmlnode_free (t_xmlnode * n);
 
+t_xmlnode *			xmlnode_update (t_xmlnode * n, const char * const name, const char * const value);
+
 /************************************
  * 			Parsing funcs
  ************************************/
- 
+
 #endif
