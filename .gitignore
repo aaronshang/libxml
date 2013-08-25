@@ -1,0 +1,5 @@
+obj/x86/*.o
+obj/x64/*.o
+obj/x64
+obj/x86
+obj
