@@ -26,7 +26,12 @@ TARGET_PATH_X64_D=$(TARGET_DIR_X64)/$(TARGET_NAME_D)
 all:\
 	all_x86 all_x64\
 	all_x86_d all_x64_d
-
+	
+create_dirs_x86:
+	mkdir -p $(OBJ_DIR_X86)/
+create_dirs_x64:
+	mkdir -p $(OBJ_DIR_X64)/
+	
 clean_x86:
 	rm -rf $(OBJ_DIR_X86)/*.o
 mrproper_x86:
@@ -46,8 +51,8 @@ mrproper_x64_d:
 	rm -rf $(TARGET_PATH_X64_D)
 	
 .PHONY:\
-	mrproper_x86 mrproper_x64 clean_x86 clean_x64\
-	mrproper_x86_d mrproper_x64_d clean_x86_d clean_x64_d
+	create_dirs_x86 mrproper_x86 mrproper_x64 clean_x86 clean_x64\
+	create_dirs_x64 mrproper_x86_d mrproper_x64_d clean_x86_d clean_x64_d
 
 CC=gcc
 AR=ar rcs
@@ -100,9 +105,9 @@ $(TARGET_PATH_X64_D): $(OBJ_DIR_X64)/xml_d.o $(OBJ_DIR_X64)/main_d.o
 	$(CC) $(CFLAGS_X64_D) -static $(OBJ_DIR_X64)/main_d.o -L$(BIN_DIR_X64) -lxml_d -o $(BIN_DIR_X64)/main_d.out
 
 
-all_x86: clean_x86 mrproper_x86 $(TARGET_PATH_X86)
-all_x64: clean_x64 mrproper_x64 $(TARGET_PATH_X64)
+all_x86: create_dirs_x86 clean_x86 mrproper_x86 $(TARGET_PATH_X86)
+all_x64: create_dirs_x64 clean_x64 mrproper_x64 $(TARGET_PATH_X64)
 
-all_x86_d: clean_x86_d mrproper_x86_d $(TARGET_PATH_X86_D)
-all_x64_d: clean_x64_d mrproper_x64_d $(TARGET_PATH_X64_D)
+all_x86_d: create_dirs_x86 clean_x86_d mrproper_x86_d $(TARGET_PATH_X86_D)
+all_x64_d: create_dirs_x64 clean_x64_d mrproper_x64_d $(TARGET_PATH_X64_D)
 
