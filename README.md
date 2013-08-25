@@ -1,4 +1,4 @@
-liblist
+libxml
 =======
 
-A linked list library
+A simple xml builder/parser library.
