@@ -15,7 +15,7 @@
 #define XML_LEVEL_NONE		4
 
 #ifndef XML_DEBUG_LEVEL
-	#define XML_DEBUG_LEVEL XML_LEVEL_TRIVIAL
+	#define XML_DEBUG_LEVEL XML_LEVEL_NORMAL
 #endif
 
 int isempty ( const char * const str);
@@ -115,5 +115,6 @@ t_xmlnode *			xmlnode_update (t_xmlnode * n, const char * const name, const char
 /************************************
  * 			Parsing funcs
  ************************************/
+t_xmllist* xmlnode_parse (t_xmllist* node, const char * const str);
 
 #endif

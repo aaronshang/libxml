@@ -71,7 +71,21 @@ t_xmlnode * xmlnode_update (
 	
 	return n;
 }
-							
+
+t_xmllist* xmlnode_parse (t_xmllist* l, const char * const str)
+{
+	const char * p = str;
+	if (!l)
+		return l;
+	while (p && *p != '\0')
+	{
+		if(*p == '<')
+			printf("New node\n");
+		p++;
+	}
+	return l;
+}
+
 t_xmlnode * xmlnode_init ( 	t_xmlnode *node,
 							t_xmlnode *parent,
 							t_xmlnode *next,

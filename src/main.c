@@ -5,6 +5,7 @@ int main (int argc, char *argv [])
 {
 	t_xmlnode * html, * body, * head;
 	t_xmlnode * div, * title;
+	t_xmllist *pars;
 	
 	FILE * f;
 	(void) argc;
@@ -32,5 +33,8 @@ int main (int argc, char *argv [])
 	
 	xmlnode_free (html);
 	
+	pars = xmllist_alloc (NULL);
+	xmlnode_parse (pars, "<node></node>");
+	xmllist_free (pars);
 	return 0;
 }
